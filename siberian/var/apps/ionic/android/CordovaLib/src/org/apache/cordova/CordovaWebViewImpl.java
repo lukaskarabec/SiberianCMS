@@ -28,7 +28,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
+import android.webkit.WebSettings; // Siberian specific
 import android.widget.FrameLayout;
 
 import org.apache.cordova.engine.SystemWebViewEngine;
@@ -383,9 +383,17 @@ public class CordovaWebViewImpl implements CordovaWebView {
         return engine;
     }
     @Override
-    public View getView() { return engine.getView(); }
+    public View getView() {
+        return engine.getView();
+    }
+
+    // Siberian specific
     @Override
-    public WebSettings getSettings() { return engine.getSettings(); }
+    public WebSettings getSettings() {
+        return engine.getSettings();
+    }
+    // Siberian specific
+
     @Override
     public Context getContext() {
         return engine.getView().getContext();

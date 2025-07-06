@@ -139,10 +139,16 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
     }
 
     @Override
-    public View getView() { return webView; }
+    public View getView() {
+        return webView;
+    }
 
+    // Siberian specific
     @Override
-    public WebSettings getSettings() { return webView.getSettings(); }
+    public WebSettings getSettings() {
+        return webView.getSettings();
+    }
+    // Siberian specific
 
     @SuppressLint({"NewApi", "SetJavaScriptEnabled"})
     @SuppressWarnings("deprecation")
@@ -161,7 +167,7 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
         // We don't save any form data in the application
         // @todo remove when Cordova drop API level 26 support
         settings.setSaveFormData(false);
-        settings.setSavePassword(false);
+        settings.setSavePassword(false); // Siberian specific
 
         if (preferences.getBoolean("AndroidInsecureFileModeEnabled", false)) {
             //These settings are deprecated and loading content via file:// URLs is generally discouraged,
@@ -178,7 +184,7 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
         // We keep this disabled because we use or shim to get around DOM_EXCEPTION_ERROR_16
         String databasePath = webView.getContext().getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
         settings.setDatabaseEnabled(true);
-        settings.setDatabasePath(databasePath);
+        settings.setDatabasePath(databasePath); // Siberian specific
 
 
         // The default is to use the module's debuggable state to decide if the webview inspecter

@@ -155,7 +155,6 @@ public class SystemWebChromeClient extends WebChromeClient {
         quotaUpdater.updateQuota(MAX_QUOTA);
     }
 
-    @Override
     /**
      * Instructs the client to show a prompt to ask the user to set the Geolocation permission state for the specified origin.
      *
@@ -164,6 +163,7 @@ public class SystemWebChromeClient extends WebChromeClient {
      * @param origin
      * @param callback
      */
+    @Override
     public void onGeolocationPermissionsShowPrompt(String origin, Callback callback) {
         super.onGeolocationPermissionsShowPrompt(origin, callback);
         callback.invoke(origin, true, false);
@@ -188,12 +188,12 @@ public class SystemWebChromeClient extends WebChromeClient {
         parentEngine.getCordovaWebView().hideCustomView();
     }
 
-    @Override
     /**
      * Ask the host application for a custom progress view to show while
      * a <video> is loading.
      * @return View The progress view.
      */
+    @Override
     public View getVideoLoadingProgressView() {
         if (mVideoProgressView == null) {
             // Create a new Loading view programmatically.
@@ -204,7 +204,7 @@ public class SystemWebChromeClient extends WebChromeClient {
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
             layout.setLayoutParams(layoutParams);
-            // the proress bar
+            // the progress bar
             ProgressBar bar = new ProgressBar(parentEngine.getView().getContext());
             LinearLayout.LayoutParams barLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             barLayoutParams.gravity = Gravity.CENTER;
